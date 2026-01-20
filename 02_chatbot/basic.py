@@ -1,10 +1,20 @@
 from fasthtml.common import *
+from fasthtml_htmxv4_patch import *
+
 from claudette import *
 
 # Set up the app, including daisyui and tailwind for the chat component
-hdrs = (picolink, Script(src="https://cdn.tailwindcss.com"),
-    Link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css"))
-app = FastHTML(hdrs=hdrs, cls="p-4 max-w-lg mx-auto")
+hdrs = [
+    picolink,
+    Script(src="https://cdn.tailwindcss.com"),
+    Link(
+        rel="stylesheet",
+        href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css",
+    ),
+]
+# htmx v4: add the v4 headers and disable FastHTML's default htmx v2 script.
+hdrs.extend(htmx_v4_hdrs)
+app = FastHTML(hdrs=hdrs, cls="p-4 max-w-lg mx-auto", htmx=False)
 
 # Set up a chat model (https://claudette.answer.ai/)
 cli = Client(models[-1])
@@ -48,4 +58,3 @@ def send(msg:str, messages:list[str]=None):
             ChatInput()) # And clear the input field via an OOB swap
 
 serve()
-
