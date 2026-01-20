@@ -22,7 +22,8 @@ import json
 from fastcore.meta import delegates
 from fasthtml.common import Meta, Script, fast_app, fhjsscr, ft_hx
 
-HTMX_V4_SRC = "https://unpkg.com/htmx.org@4.0.0-alpha4/dist/htmx.js"
+HTMX_V4_SRC = "https://unpkg.com/htmx.org@4.0.0-alpha6/dist/htmx.js"
+WS_V4_SRC = "https://unpkg.com/htmx.org@4.0.0-alpha6/dist/ext/hx-ws.js"
 DEFAULT_HTMX_V4_CONFIG = {"metaCharacter": "-"}
 
 
@@ -31,6 +32,7 @@ def Partial(*args, **kwargs): return ft_hx("hx-partial")(*args, **kwargs)
 
 
 htmx_v4 = Script(src=HTMX_V4_SRC)
+ws_v4 = Script(src=WS_V4_SRC)
 meta_cfg = Meta(name="htmx:config", content=json.dumps(DEFAULT_HTMX_V4_CONFIG))
 htmx_v4_hdrs = (meta_cfg, fhjsscr, htmx_v4)
 
