@@ -1,6 +1,7 @@
 from fasthtml.common import *
+from fasthtml_htmxv4_patch import *
 
-app,rt,todos,Todo = fast_app(
+app,rt,todos,Todo = fast_app_v4(
     'data/todos.db',
     hdrs=[Style(':root { --pico-font-size: 100%; }')],
     id=int, task=str, done=bool, pk='id')
