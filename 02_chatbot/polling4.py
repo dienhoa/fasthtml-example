@@ -1,10 +1,14 @@
 from fasthtml.common import *
+from hx4_patch.core import *
+
 from claudette import *
 
 # Set up the app, including daisyui and tailwind for the chat component
 tlink = Script(src="https://cdn.tailwindcss.com"),
 dlink = Link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css")
-app = FastHTML(hdrs=(tlink, dlink, picolink))
+hdrs=[tlink, dlink, picolink]
+hdrs.extend(htmx_v4_hdrs)
+app = FastHTML(hdrs=hdrs, cls="p-4 max-w-lg mx-auto", htmx=False)
 
 # Set up a chat model client and list of messages (https://claudette.answer.ai/)
 cli = Client(models[-1])

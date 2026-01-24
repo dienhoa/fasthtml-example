@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "hx4_patch"
+  site-url: "https://dienhoa.github.io/hx4_patch"
+  description: "helpers to use htmx v4 (alpha) with python-fasthtml"
+  repo-branch: main
+  repo-url: "https://github.com/dienhoa/hx4_patch"
