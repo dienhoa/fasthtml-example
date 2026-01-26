@@ -45,6 +45,16 @@ def def_hdrs(htmx=True, htmx4=False, surreal=True):
     # TODO: Check if fhjsscr works with htmx4
     return [charset, viewport] + hdrs
 
+# %% ../nbs/00_core.ipynb #28426fc5
+def _wrap_ex(f, status_code, hdrs, ftrs, htmlkw, bodykw, body_wrap):
+    "Wrap exception handler with FastHTML request processing"
+    async def _f(req, exc):
+        req.hdrs,req.ftrs,req.htmlkw,req.bodykw = map(deepcopy, (hdrs, ftrs, htmlkw, bodykw))
+        req.body_wrap = body_wrap
+        res = await _handle(f, req, exc)
+        return _resp(req, res, status_code=status_code)
+    return _f
+
 # %% ../nbs/00_core.ipynb #7fe815c2
 def _list(o):
     "Wrap non-list item in a list, returning empty list if None"
