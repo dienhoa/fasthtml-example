@@ -97,7 +97,7 @@ def __init__(self: FastHTML, debug=False, routes=None, middleware=None, title: s
         def _not_found(req, exc): return  Response('404 Not Found', status_code=404)
         exception_handlers[404] = _not_found
     excs = {k:_wrap_ex(v, k, hdrs, ftrs, htmlkw, bodykw, body_wrap=body_wrap) for k,v in exception_handlers.items()}
-    super().__init__(debug, routes, middleware=middleware, exception_handlers=excs, on_startup=on_startup, on_shutdown=on_shutdown, lifespan=lifespan)
+    super(FastHTML, self).__init__(debug, routes, middleware=middleware, exception_handlers=excs, on_startup=on_startup, on_shutdown=on_shutdown, lifespan=lifespan)
 
 # %% ../nbs/00_core.ipynb #b99c4ac8
 def _get_tbl(dt, nm, schema):
