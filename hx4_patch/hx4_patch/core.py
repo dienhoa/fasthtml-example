@@ -45,6 +45,11 @@ def def_hdrs(htmx=True, htmx4=False, surreal=True):
     # TODO: Check if fhjsscr works with htmx4
     return [charset, viewport] + hdrs
 
+# %% ../nbs/00_core.ipynb #7fe815c2
+def _list(o):
+    "Wrap non-list item in a list, returning empty list if None"
+    return [] if not o else list(o) if isinstance(o, (tuple,list)) else [o]
+
 # %% ../nbs/00_core.ipynb #84efd49a
 # Patch FastHTML.__init__ to add htmx4 support
 # - Adds `htmx4=False` parameter to toggle htmx v4 headers

@@ -9,5 +9,6 @@ d = { 'settings': { 'branch': 'main',
                                 'hx4_patch.core.Partial': ('core.html#partial', 'hx4_patch/core.py'),
                                 'hx4_patch.core._app_factory': ('core.html#_app_factory', 'hx4_patch/core.py'),
                                 'hx4_patch.core._get_tbl': ('core.html#_get_tbl', 'hx4_patch/core.py'),
+                                'hx4_patch.core._list': ('core.html#_list', 'hx4_patch/core.py'),
                                 'hx4_patch.core.def_hdrs': ('core.html#def_hdrs', 'hx4_patch/core.py'),
                                 'hx4_patch.core.fast_app': ('core.html#fast_app', 'hx4_patch/core.py')}}}
