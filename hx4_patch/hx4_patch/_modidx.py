@@ -14,4 +14,5 @@ d = { 'settings': { 'branch': 'main',
                                 'hx4_patch.core._wrap_ws': ('core.html#_wrap_ws', 'hx4_patch/core.py'),
                                 'hx4_patch.core._ws_endp': ('core.html#_ws_endp', 'hx4_patch/core.py'),
                                 'hx4_patch.core.def_hdrs': ('core.html#def_hdrs', 'hx4_patch/core.py'),
-                                'hx4_patch.core.fast_app': ('core.html#fast_app', 'hx4_patch/core.py')}}}
+                                'hx4_patch.core.fast_app': ('core.html#fast_app', 'hx4_patch/core.py'),
+                                'hx4_patch.core.sse_message': ('core.html#sse_message', 'hx4_patch/core.py')}}}
