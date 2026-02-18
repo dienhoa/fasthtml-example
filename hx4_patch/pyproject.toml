@@ -1,11 +1,30 @@
 [build-system]
-requires = ["setuptools>=64.0"]
+requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name="hx4_patch"
-requires-python=">=3.9"
-dynamic = [ "keywords", "description", "version", "dependencies", "optional-dependencies", "readme", "license", "authors", "classifiers", "entry-points", "scripts", "urls"]
+name = "hx4_patch"
+dynamic = ["version"]
+description = "helpers to use htmx v4 (alpha) with python-fasthtml"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "Apache-2.0"}
+authors = [{name = "Dien-Hoa", email = "dienhoa.t@gmail.com"}]
+keywords = ['nbdev', 'jupyter', 'notebook', 'python']
+classifiers = ["Natural Language :: English", "Intended Audience :: Developers", "Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3 :: Only"]
+dependencies = ['python-fasthtml', 'fastcore']
 
-[tool.uv]
-cache-keys = [{ file = "pyproject.toml" }, { file = "settings.ini" }, { file = "setup.py" }]
+[project.urls]
+Repository = "https://github.com/dienhoa/hx4_patch"
+Documentation = "https://dienhoa.github.io/hx4_patch"
+
+[project.entry-points.nbdev]
+hx4_patch = "hx4_patch._modidx:d"
+
+[tool.setuptools.dynamic]
+version = {attr = "hx4_patch.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["hx4_patch"]
+
+[tool.nbdev]
