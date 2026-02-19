@@ -1,7 +1,7 @@
 from fasthtml.common import *
 from fasthtml.oauth import GoogleAppClient, OAuth
 
-cli = GoogleAppClient.from_file('/Users/jhoward/git/_nbs/oauth-test/client_secret.json')
+cli = GoogleAppClient.from_file('client_secret.json')
 
 class Auth(OAuth):
     def get_auth(self, info, ident, session, state):
