@@ -53,7 +53,7 @@ def def_hdrs(htmx=True, htmx4=False, surreal=True):
     if htmx: hdrs = [htmxsrc,fhjsscr] + hdrs
     if htmx4: 
         # metaCharacter="-" makes htmx4 use dashes instead of colons (Python-friendly)
-        meta_cfg = Meta(name="htmx:config", content=json.dumps({"metaCharacter": "-"}))
+        meta_cfg = Meta(name="htmx-config", content=json.dumps({"metaCharacter": "-"}))
         hdrs = [meta_cfg, htmx4src,fhjsscr] + hdrs 
     # TODO: Check if fhjsscr works with htmx4
     return [charset, viewport] + hdrs
