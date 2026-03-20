@@ -41,7 +41,7 @@ def Partial(*args, **kwargs): return ft_hx("hx-partial")(*args, **kwargs)
 
 
 # %% ../nbs/00_core.ipynb #5b899007
-htmx4src   = Script(src="https://unpkg.com/htmx.org@4.0.0-alpha7/dist/htmx.js")
+htmx4src   = Script(src="https://unpkg.com/htmx.org@4.0.0-alpha8/dist/htmx.js")
 
 # %% ../nbs/00_core.ipynb #23a4ce68
 # When htmx4=True, configures htmx v4 with metaCharacter="-"
@@ -76,7 +76,7 @@ def __init__(self: FastHTML, debug=False, routes=None, middleware=None, title: s
     self.htmx4 = htmx4
     hdrs,ftrs,exts = map(listify, (hdrs,ftrs,exts))
     if htmx4 and exts:
-        exts = ['ws4' if e in ('ws', 'ws4') else e for e in exts]
+        exts = ['ws4' if e in ('ws', 'ws4') else 'sse4' if e in ('sse', 'sse4') else e for e in exts]
     exts = {k:htmx_exts[k] for k in exts}
     htmlkw = htmlkw or {}
     if default_hdrs: hdrs = def_hdrs(htmx, htmx4, surreal=surreal) + hdrs
@@ -202,7 +202,7 @@ from datetime import datetime,date
 
 
 # %% ../nbs/00_core.ipynb #e1700c31
-htmx_exts['ws4'] = 'https://unpkg.com/htmx.org@4.0.0-alpha7/dist/ext/hx-ws.js'
+htmx_exts['ws4'] = 'https://unpkg.com/htmx.org@4.0.0-alpha8/dist/ext/hx-ws.js'
 
 # %% ../nbs/00_core.ipynb #d1c934db
 async def _find_p(conn, data, hdrs, arg:str, p:Parameter):
@@ -263,6 +263,10 @@ async def _wrap_ws(ws, data, params):
     return await _find_ps(ws, data, hdrs, params)
 
 _core._wrap_ws = _wrap_ws
+
+# %% ../nbs/00_core.ipynb #87c3798e
+htmx_exts['sse4'] = 'https://unpkg.com/htmx.org@4.0.0-alpha8/dist/ext/hx-sse.js'
+
 
 # %% ../nbs/00_core.ipynb #17aac44d
 def sse_message(elm, event='message', htmx4=False):
