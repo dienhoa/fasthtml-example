@@ -58,7 +58,7 @@ def def_hdrs(htmx=True, htmx4=False, surreal=True):
     # TODO: Check if fhjsscr works with htmx4
     return [charset, viewport] + hdrs
 
-# %% ../nbs/00_core.ipynb #940ad1bd
+# %% ../nbs/00_core.ipynb #4ed84568
 # Patch FastHTML.__init__ to add htmx4 support
 # - Adds `htmx4` parameter to toggle htmx v4 headers
 # - Add self.htmx4
@@ -86,8 +86,8 @@ def __init__(self: FastHTML, debug=False, routes=None, middleware=None, title: s
         from IPython.display import display,HTML
         if nb_hdrs: display(HTML(to_xml(tuple(hdrs))))
         middleware.append(cors_allow)
-    on_startup,on_shutdown = listify(on_startup) or None,listify(on_shutdown) or None
-    self.lifespan,self.hdrs,self.ftrs = lifespan,hdrs,ftrs
+    self.lifespan = Lifespan(on_startup, on_shutdown, lifespan)
+    self.hdrs,self.ftrs = hdrs,ftrs
     self.body_wrap,self.before,self.after,self.htmlkw,self.bodykw = body_wrap,before,after,htmlkw,bodykw
     self.secret_key = get_key(secret_key, key_fname)
     if sess_cls:
@@ -100,7 +100,7 @@ def __init__(self: FastHTML, debug=False, routes=None, middleware=None, title: s
         def _not_found(req, exc): return  Response('404 Not Found', status_code=404)
         exception_handlers[404] = _not_found
     excs = {k:_wrap_ex(v, k, hdrs, ftrs, htmlkw, bodykw, body_wrap=body_wrap) for k,v in exception_handlers.items()}
-    super(FastHTML, self).__init__(debug, routes, middleware=middleware, exception_handlers=excs, on_startup=on_startup, on_shutdown=on_shutdown, lifespan=lifespan)
+    super(FastHTML, self).__init__(debug, routes, middleware=middleware, exception_handlers=excs, lifespan=self.lifespan)
 
 # %% ../nbs/00_core.ipynb #4ea919d9
 # Supports htmx4=True for htmx v4 compatibility
