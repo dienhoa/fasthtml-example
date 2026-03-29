@@ -259,7 +259,7 @@ _core._find_p = _find_p
 
 # %% ../nbs/00_core.ipynb #41a9e400
 async def _wrap_ws(ws, data, params):
-    hdrs = {k.lower().replace('-','_'):v for k,v in (data.pop('HEADERS', {}) or data.pop('headers', {})).items()}
+    hdrs = Headers({k.lower():v for k,v in (data.pop('HEADERS', {}) or data.pop('headers', {})).items()})
     return await _find_ps(ws, data, hdrs, params)
 
 _core._wrap_ws = _wrap_ws
