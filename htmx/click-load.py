@@ -1,4 +1,5 @@
 from fasthtml.common import *
+from fasthtml.pico import *
 from asyncio import sleep
 from random import randint
 import secrets

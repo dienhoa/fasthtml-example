@@ -1,4 +1,5 @@
 from fasthtml.common import *
+from fasthtml.pico import *
 import json
 
 # Set up the app, including daisyui and tailwind for the chat component

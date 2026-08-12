@@ -1,5 +1,6 @@
 """Example from https://github.com/fabge/fasthtml-sse/"""
 from fasthtml.common import *
+from fasthtml.pico import *
 from claudette import *
 import asyncio
 from starlette.responses import StreamingResponse

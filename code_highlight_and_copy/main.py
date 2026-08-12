@@ -1,4 +1,5 @@
 from fasthtml.common import *
+from fasthtml.pico import *
 
 app = FastHTML(hdrs=(picolink, MarkdownJS(), HighlightJS()))
 

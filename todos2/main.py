@@ -1,4 +1,5 @@
 from fasthtml.common import *
+from fasthtml.pico import *
 from hmac import compare_digest
 # required for sqlalchemy:
 # from fastsql import *

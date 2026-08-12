@@ -1,4 +1,5 @@
 from fasthtml.common import *
+from fasthtml.pico import *
 import anthropic, os, base64, uvicorn
 
 key = os.environ.get("ANTHROPIC_API_KEY")

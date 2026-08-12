@@ -1,4 +1,5 @@
 from fasthtml.common import *
+from fasthtml.pico import *
 from claudette import *
 from starlette.responses import StreamingResponse
 import asyncio

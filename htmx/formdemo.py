@@ -1,4 +1,5 @@
 from fasthtml.common import *
+from fasthtml.pico import *
 app,rt = fast_app(live=True)
 
 @rt

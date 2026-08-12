@@ -1,4 +1,5 @@
 from fasthtml.common import *
+from fasthtml.pico import *
 import os, uvicorn
 from starlette.responses import FileResponse
 from starlette.datastructures import UploadFile
